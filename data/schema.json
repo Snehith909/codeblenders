@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://claim-what-is-yours.local/schemas/scheme.json",
+  "title": "Scheme",
+  "description": "One government scheme entry. Contains no Aadhaar, account number, IFSC or bank fields.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "level",
+    "state",
+    "summary",
+    "benefit",
+    "rules",
+    "documents",
+    "apply_steps",
+    "deadline",
+    "source_url",
+    "last_verified",
+    "needs_verification"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "level": {
+      "type": "string",
+      "enum": ["Central", "Karnataka"]
+    },
+    "state": {
+      "type": "string",
+      "enum": ["Karnataka", "All India"]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "benefit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "field", "op", "value", "reason"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^r[0-9]+$"
+          },
+          "field": {
+            "type": "string",
+            "minLength": 1
+          },
+          "op": {
+            "type": "string",
+            "enum": ["eq", "neq", "gt", "gte", "lt", "lte", "in", "not_in", "exists"]
+          },
+          "value": {},
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "documents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "apply_steps": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "deadline": {
+      "type": ["string", "null"]
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "last_verified": {
+      "type": ["string", "null"],
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "needs_verification": {
+      "type": "boolean"
+    }
+  },
+  "if": {
+    "properties": {
+      "last_verified": {
+        "type": "null"
+      }
+    },
+    "required": ["last_verified"]
+  },
+  "then": {
+    "properties": {
+      "needs_verification": {
+        "const": true
+      }
+    }
+  }
+}

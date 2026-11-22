@@ -1,0 +1,243 @@
+[
+  {
+    "id": "pm-kisan",
+    "name": "PM-KISAN",
+    "level": "Central",
+    "state": "All India",
+    "summary": "Direct income support to landholding farmer families, paid in instalments. Verify against the official source.",
+    "benefit": "₹6,000 per year in three instalments to landholding farmer families",
+    "rules": [
+      {"id": "r1", "field": "land_acres", "op": "gt", "value": 0, "reason": "Must own cultivable land"},
+      {"id": "r2", "field": "is_income_tax_payer", "op": "eq", "value": false, "reason": "Income-tax payers are excluded"}
+    ],
+    "documents": [
+      "Land records (RTC/pahani)",
+      "Aadhaar (for enrolment only; this app does not store it)"
+    ],
+    "apply_steps": [
+      "Open pmkisan.gov.in",
+      "Register with your land and bank details",
+      "Check status with your registration number"
+    ],
+    "deadline": null,
+    "source_url": "https://pmkisan.gov.in",
+    "last_verified": null,
+    "needs_verification": true
+  },
+  {
+    "id": "pmfby",
+    "name": "PMFBY (Pradhan Mantri Fasal Bima Yojana)",
+    "level": "Central",
+    "state": "All India",
+    "summary": "Crop insurance for farmers against notified crop losses. Verify against the official source.",
+    "benefit": "Insurance cover for notified crops against losses, with farmer premium set by the scheme",
+    "rules": [
+      {"id": "r1", "field": "is_farmer", "op": "eq", "value": true, "reason": "Must be a farmer growing a notified crop; the notified-crop list is unverified"},
+      {"id": "r2", "field": "land_acres", "op": "exists", "value": null, "reason": "Land holding requirement is unverified"}
+    ],
+    "documents": [
+      "Land records (RTC/pahani)",
+      "Sowing declaration for the notified crop"
+    ],
+    "apply_steps": [
+      "Open pmfby.gov.in",
+      "Enrol for the notified crop before the cut-off date",
+      "Keep the enrolment receipt for claims"
+    ],
+    "deadline": null,
+    "source_url": "https://pmfby.gov.in",
+    "last_verified": null,
+    "needs_verification": true
+  },
+  {
+    "id": "kcc",
+    "name": "Kisan Credit Card (KCC)",
+    "level": "Central",
+    "state": "All India",
+    "summary": "Short-term credit for farmers for crop cultivation and allied needs. Verify against the official source.",
+    "benefit": "Short-term farm credit limit through a Kisan Credit Card, subject to bank sanction",
+    "rules": [
+      {"id": "r1", "field": "is_farmer", "op": "eq", "value": true, "reason": "Farmer status required; the exact eligibility criteria are unverified"},
+      {"id": "r2", "field": "age", "op": "gte", "value": 18, "reason": "Minimum age of 18 is an unverified threshold"}
+    ],
+    "documents": [
+      "Identity proof (government ID)",
+      "Land records (RTC/pahani)"
+    ],
+    "apply_steps": [
+      "Visit the official portal listed in the source link",
+      "Apply through a bank branch or the portal with land details"
+    ],
+    "deadline": null,
+    "source_url": "https://www.india.gov.in",
+    "last_verified": null,
+    "needs_verification": true
+  },
+  {
+    "id": "pm-kmy",
+    "name": "PM Kisan Maan-dhan Yojana (PM-KMY)",
+    "level": "Central",
+    "state": "All India",
+    "summary": "Voluntary pension scheme for small and marginal farmers. Verify against the official source.",
+    "benefit": "Monthly pension after retirement age for enrolled small and marginal farmers",
+    "rules": [
+      {"id": "r1", "field": "land_acres", "op": "exists", "value": null, "reason": "Small or marginal farmer land limit is unverified"},
+      {"id": "r2", "field": "age", "op": "gte", "value": 18, "reason": "Minimum entry age of 18 is an unverified threshold"}
+    ],
+    "documents": [
+      "Land records (RTC/pahani)",
+      "Identity proof (government ID)"
+    ],
+    "apply_steps": [
+      "Open maandhan.in",
+      "Enrol through the portal or a Common Service Centre"
+    ],
+    "deadline": null,
+    "source_url": "https://maandhan.in",
+    "last_verified": null,
+    "needs_verification": true
+  },
+  {
+    "id": "soil-health-card",
+    "name": "Soil Health Card",
+    "level": "Central",
+    "state": "All India",
+    "summary": "Free soil testing and nutrient recommendations for farmers. Verify against the official source.",
+    "benefit": "Soil test report with crop nutrient recommendations, provided free of charge",
+    "rules": [
+      {"id": "r1", "field": "is_farmer", "op": "eq", "value": true, "reason": "Farmer status required; the eligible-farm definition is unverified"},
+      {"id": "r2", "field": "land_acres", "op": "exists", "value": null, "reason": "Land holding for sampling is unverified"}
+    ],
+    "documents": [
+      "Land records (RTC/pahani)"
+    ],
+    "apply_steps": [
+      "Open soilhealth.dac.gov.in",
+      "Request a soil sample through your state agriculture office"
+    ],
+    "deadline": null,
+    "source_url": "https://soilhealth.dac.gov.in",
+    "last_verified": null,
+    "needs_verification": true
+  },
+  {
+    "id": "pm-jay",
+    "name": "PM-JAY (Ayushman Bharat)",
+    "level": "Central",
+    "state": "All India",
+    "summary": "Health cover for eligible families for hospital treatment. Verify against the official source.",
+    "benefit": "Annual health cover for hospitalisation for eligible families",
+    "rules": [
+      {"id": "r1", "field": "annual_income_inr", "op": "exists", "value": null, "reason": "Income-based eligibility threshold is unverified"},
+      {"id": "r2", "field": "occupation", "op": "exists", "value": null, "reason": "Occupation-based eligibility criteria are unverified"}
+    ],
+    "documents": [
+      "Identity proof (government ID)",
+      "Income certificate"
+    ],
+    "apply_steps": [
+      "Open pmjay.gov.in",
+      "Check eligibility at an empanelled hospital or the portal"
+    ],
+    "deadline": null,
+    "source_url": "https://pmjay.gov.in",
+    "last_verified": null,
+    "needs_verification": true
+  },
+  {
+    "id": "pm-suraksha-bima",
+    "name": "PM Suraksha Bima Yojana (PMSBY)",
+    "level": "Central",
+    "state": "All India",
+    "summary": "Low-premium accident insurance cover. Verify against the official source.",
+    "benefit": "Accidental death and disability cover at a low annual premium",
+    "rules": [
+      {"id": "r1", "field": "age", "op": "gte", "value": 18, "reason": "Minimum age of 18 is an unverified threshold"},
+      {"id": "r2", "field": "age", "op": "lte", "value": 70, "reason": "Maximum age of 70 is an unverified threshold"}
+    ],
+    "documents": [
+      "Identity proof (government ID)",
+      "Bank linkage for premium debit"
+    ],
+    "apply_steps": [
+      "Open jansuraksha.gov.in",
+      "Enrol through your bank or the portal"
+    ],
+    "deadline": null,
+    "source_url": "https://jansuraksha.gov.in",
+    "last_verified": null,
+    "needs_verification": true
+  },
+  {
+    "id": "krishi-bhagya",
+    "name": "Krishi Bhagya",
+    "level": "Karnataka",
+    "state": "Karnataka",
+    "summary": "Karnataka support for farm water and moisture conservation. Verify against the official source.",
+    "benefit": "Subsidy support for farm water-conservation structures in Karnataka",
+    "rules": [
+      {"id": "r1", "field": "state", "op": "eq", "value": "Karnataka", "reason": "Must be resident in Karnataka; district eligibility is unverified"},
+      {"id": "r2", "field": "is_farmer", "op": "eq", "value": true, "reason": "Farmer status required; the land threshold is unverified"}
+    ],
+    "documents": [
+      "Land records (RTC/pahani)",
+      "Identity proof (government ID)"
+    ],
+    "apply_steps": [
+      "Open raitamitra.karnataka.gov.in",
+      "Apply through the department portal or your taluk agriculture office"
+    ],
+    "deadline": null,
+    "source_url": "https://raitamitra.karnataka.gov.in",
+    "last_verified": null,
+    "needs_verification": true
+  },
+  {
+    "id": "raitha-siri",
+    "name": "Raitha Siri",
+    "level": "Karnataka",
+    "state": "Karnataka",
+    "summary": "Karnataka incentive scheme for farmers growing selected crops. Verify against the official source.",
+    "benefit": "Incentive payment for farmers growing selected crops in Karnataka",
+    "rules": [
+      {"id": "r1", "field": "state", "op": "eq", "value": "Karnataka", "reason": "Must be resident in Karnataka"},
+      {"id": "r2", "field": "land_acres", "op": "exists", "value": null, "reason": "Land holding and crop eligibility thresholds are unverified"}
+    ],
+    "documents": [
+      "Land records (RTC/pahani)",
+      "Identity proof (government ID)"
+    ],
+    "apply_steps": [
+      "Open raitamitra.karnataka.gov.in",
+      "Register your cultivated crop through the portal"
+    ],
+    "deadline": null,
+    "source_url": "https://raitamitra.karnataka.gov.in",
+    "last_verified": null,
+    "needs_verification": true
+  },
+  {
+    "id": "raitha-vidya-nidhi",
+    "name": "Raitha Vidya Nidhi",
+    "level": "Karnataka",
+    "state": "Karnataka",
+    "summary": "Karnataka education support for children of farmer families. Verify against the official source.",
+    "benefit": "Education support for children of farmer families in Karnataka",
+    "rules": [
+      {"id": "r1", "field": "state", "op": "eq", "value": "Karnataka", "reason": "Must be resident in Karnataka"},
+      {"id": "r2", "field": "annual_income_inr", "op": "exists", "value": null, "reason": "Family income threshold is unverified"}
+    ],
+    "documents": [
+      "Land records (RTC/pahani)",
+      "Income certificate"
+    ],
+    "apply_steps": [
+      "Open raitamitra.karnataka.gov.in",
+      "Apply through the portal before the notified window"
+    ],
+    "deadline": null,
+    "source_url": "https://raitamitra.karnataka.gov.in",
+    "last_verified": null,
+    "needs_verification": true
+  }
+]
